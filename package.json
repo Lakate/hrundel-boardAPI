@@ -1,0 +1,17 @@
+{
+  "name": "hrundelboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --recursive tests/"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "nock": "8.0.0"
+  },
+  "dependencies": {
+    "request": "2.72.0"
+  }
+}
