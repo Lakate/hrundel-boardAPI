@@ -1,9 +1,9 @@
 'use strict';
 
 const request = require('request');
+const dbUrl = process.env.DB_URL || require('config').get('db.DB_URL');
 
 const mongoClient = require('mongodb').MongoClient;
-const dbUrl = 'mongodb://hrundel:hrundelurfu2015@ds013222.mlab.com:13222/test_api';
 
 function getDataFromDB () {
     mongoClient.connect(dbUrl,(err, db) => {
@@ -26,7 +26,7 @@ function getDataFromDB () {
 function sendDataToServer (data) {
     request.post({
         headers: {'content-type' : 'application/json'},
-        url: 'http://localhost:5000/students/refresh',
+        url: 'http://hrundel-board.herokuapp.com/students/refresh',
         json: data
     }, (err, res) => {
         if (err) {
