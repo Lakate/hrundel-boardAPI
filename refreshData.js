@@ -1,29 +1,8 @@
 'use strict';
 
-const bunyan = require('bunyan');
-
-function resSerializer(res) {
-    return {
-        statusCode: res.statusCode,
-        body: res.body,
-        request: {
-            href: res.request.href,
-            method: res.request.method,
-            headers: res.request.headers
-        }
-    };
-}
-
-const log = bunyan.createLogger({
-    name: 'myapp',
-    serializers: {
-        res: resSerializer,
-        err: bunyan.stdSerializers.err      // standard bunyan error serializer
-    }
-});
-
 const mongoClient = require('mongodb').MongoClient;
 const request = require('request');
+const log = require('./logger');
 
 const dbUrl = process.env.DB_URL || require('config').get('db.DB_URL');
 log.info(dbUrl);
